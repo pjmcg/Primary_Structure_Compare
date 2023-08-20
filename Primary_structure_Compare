@@ -1,0 +1,58 @@
+import os
+import string
+import sys
+from get_amino_acid_sequence_PSC import get_amino_acid_sequence
+
+
+
+
+def compare_amino_acid_reactions(sequence1, sequence2, print_details_flag="False"):
+    output_string = ""
+
+    print(print_details_flag)
+    # Prints an error if the length of the two sequences are not the same
+    if len(sequence1) != len(sequence2):
+        raise ValueError("The two sequences are not the same length!")
+
+    # get the charge for each sequence, so we can compare them next:
+    seq1_charge = get_amino_acid_sequence(sequence1)
+    seq2_charge = get_amino_acid_sequence(sequence2)
+
+    # Iterate over the protein sequence
+    count = 0
+    for char in seq1_charge:
+        if ((char == "+") and (seq2_charge[count] == "+")) or ((char == "-") and (seq2_charge[count] == "-")):
+            if print_details_flag == "True":
+                output_string += ("Position " + str(count) + ":" + sequence1[count] + "-" + sequence2[count] +
+                                  " Repulsive Interaction\n")
+            else:
+                output_string += "R"
+        elif((char == "+") and (seq2_charge[count] == "-")) or ((char == "-") and (seq2_charge[count] == "+")):
+            if print_details_flag == "True":
+                output_string += ("Position " + str(count) + ":" + sequence1[count] + "-" + sequence2[count] +
+                                  " Attractive Interaction\n")
+            else:
+                output_string += "A"
+        else:
+            if print_details_flag == "True":
+                output_string += ("Position " + str(count) + ":" + sequence1[count] + "-" + sequence2[count] +
+                                  " No Interaction\n")
+            else:
+                output_string += "N"
+
+        count += 1
+    print('Output is: ')
+    print(output_string)
+    return output_string
+
+
+if __name__ == '__main__':
+    import sys
+
+   # function = getattr(sys.modules[__name__], sys.argv[1])
+    amino_sequence1 = input("Input Amino Acid 1 (One Letter Code): ")
+    amino_sequence2 = input("Input Amino Acid 1 (One Letter Code): ")
+    flag = input("Type 'True' or 'False': ")
+    compare_amino_acid_reactions(amino_sequence1, amino_sequence2, flag)
+
+termination_sequence= input("Interactions Above. Press 'Enter' to escape")
