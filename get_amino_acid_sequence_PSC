@@ -1,0 +1,35 @@
+import os
+import string
+import sys
+
+
+def get_amino_acid_sequence(protein_sequence):
+    output_string = ""
+
+    # Define the mappings of amino acids
+    pcaa = ["R", "H", "K"]
+    ncaa = ["D", "E"]
+    ucaa = ["G", "A", "V", "L", "I", "M", "P", "W", "F", "C"]
+
+    # Iterate over the protein sequence
+    for char in protein_sequence:
+        if char in pcaa:
+            output_string += "+"
+        elif char in ncaa:
+            output_string += "-"
+        elif char in ucaa:
+            output_string += "0"
+        else:
+            raise ValueError("Incorrect amino acid sequence was entered!")
+
+    print("Charges for " + protein_sequence + " sequence: ")
+    print(output_string)
+    return output_string
+
+
+if __name__ == '__main__':
+    import sys
+
+    #function = getattr(sys.modules[__name__], sys.argv[1])
+    amino_sequence = sys.argv[1]
+    get_amino_acid_sequence(amino_sequence)
