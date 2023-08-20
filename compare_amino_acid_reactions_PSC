@@ -1,7 +1,7 @@
 import os
 import string
 import sys
-from get_amino_acid_sequence import get_amino_acid_sequence
+from get_amino_acid_sequence_PSC import get_amino_acid_sequence
 
 
 def compare_amino_acid_reactions(sequence1, sequence2, print_details_flag="False"):
