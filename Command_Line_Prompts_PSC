@@ -1,0 +1,13 @@
+Command Line Prompts
+
+1. from  get_amino_acid_sequence_PSC import get_amino_acid_sequence
+
+2. get_amino_acid_sequence("RHD")
+
+3. from compare_amino_acid_reactions_PSC import compare_amino_acid_reactions
+
+4a.compare_amino_acid_reactions ("RHD", "DHR", "True")
+
+or
+
+4b. compare_amino_acid_reactions ("RHD", "DHR", "False")
